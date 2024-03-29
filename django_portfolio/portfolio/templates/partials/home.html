@@ -1,0 +1,57 @@
+{% extends 'partials/layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<!-- Hero Section -->
+<header class="row bg-black align-items-center">
+  <div class="col-md-3 text-center">
+    <img src="{% static 'portfolio/avatar.png' %}" alt="" class="img-fluid" />
+  </div>
+
+  <div class="col-md-9">
+    <div class="text-center">
+        <h1>Hi I am <strong>Jose Ignacio</strong></h1>
+        <h3>I am Data Scientist and FullStack Developer</h3>
+    </div>
+    <p>Soy un Data Scientist orientado a la preparación, carga y análisis de datos 
+      para generar informes y recomendaciones a empresas y compañías que necesiten 
+      mejorar y actualizar sus operaciones usando el Big Data. 
+      También tengo conocimientos en el desarrollo web en la parte Frontend y Backend 
+      para la creación y despliegue de proyectos en la web. Desde hace 6 años conocí el mundo 
+      del trading y eso me llevó rápidamente a adentrarme en el mundo de la programación 
+      y el desarrollo de modelos de predicción de precios, y así también conocí el maravilloso
+      mundo del Data Science, el cual me ayudó a manejar grandes volúmenes de datos para poder 
+      crear modelos robustos de predicción y cambios de tendencias en varios activos e instrumentos financieros.</p>
+  </div>
+</header>
+
+<!-- Porfolio Section -->
+<div class="row my-4 text-center">
+
+  <h3>My Projects</h3>
+  <p>Aquí puedes ver algunos de los proyectos en los que trabajé.</p>
+
+  {% for project in projects %}
+  <div class="col-md-4 p-4">
+    <div class="card bg-black card-project">
+      <img src="{{project.image.url }}" alt="{{project.title}}" class="card-img-top" />
+
+      <div class="card-body">
+
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+
+        {% if project.url %}
+        <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="__blank" rel="noreferrer">Visit the
+          Project</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
